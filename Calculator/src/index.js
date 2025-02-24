@@ -57,10 +57,36 @@ function application() {
         } else if (commandInput.toUpperCase().trim() === "ADD") {
           inputDataValue1 = 0;
           inputDataValue2 = 0;
-          inputDataValue1 = getUserInput("Enter first number to add: ");
-          inputDataValue2 = getUserInput("Enter second number to add: ");
-          let addResult = myMath.add(inputDataValue1, inputDataValue2);
-          console.log(`Addition is ${addResult}`);
+          inputDataValue1 = getUserInput("Enter first number: ");
+          inputDataValue2 = getUserInput("Enter second number: ");
+          let mathResult = myMath.add(inputDataValue1, inputDataValue2);
+          console.log(`Addition is ${mathResult}`);
+        } else if (commandInput.toUpperCase().trim() === "SUBTRACT") {
+          inputDataValue1 = 0;
+          inputDataValue2 = 0;
+          inputDataValue1 = getUserInput("Enter first number: ");
+          inputDataValue2 = getUserInput("Enter second number: ");
+          let mathResult = myMath.subtract(inputDataValue1, inputDataValue2);
+          console.log(`Subtraction is ${mathResult}`);
+        } else if (commandInput.toUpperCase().trim() === "MULTIPLY") {
+          inputDataValue1 = 0;
+          inputDataValue2 = 0;
+          inputDataValue1 = getUserInput("Enter first number: ");
+          inputDataValue2 = getUserInput("Enter second number: ");
+          let mathResult = myMath.multiply(inputDataValue1, inputDataValue2);
+          console.log(`Multiplication is ${mathResult}`);
+        } else if (commandInput.toUpperCase().trim() === "DIVIDE") {
+          inputDataValue1 = 0;
+          inputDataValue2 = 0;
+          inputDataValue1 = getUserInput("Enter first number: ");
+          inputDataValue2 = getUserInput("Enter second number: ");
+          let mathResult = myMath.divide(inputDataValue1, inputDataValue2);
+          console.log(`Division is ${mathResult}`);
+        } else if (commandInput.toUpperCase().trim() === "FACTORIAL") {
+          inputDataValue1 = 0;
+          inputDataValue1 = getUserInput("Enter number: ");
+          let mathResult = myMath.factorial(inputDataValue1);
+          console.log(`Factorial is ${mathResult}`);
         }
       }
     }
