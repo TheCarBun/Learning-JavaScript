@@ -2,6 +2,7 @@
  * @file index.js
  * @module index
  * @description A small command line calculator
+ * @requires module:myMath
  * @requires module:prompt
  * @requires {@link https://www.npmjs.com/package/path|path}
  * @author TheCarBun
@@ -10,6 +11,7 @@
  */
 
 // Internal imports
+let myMath = require("./myMath");
 let prompt = require("./prompt");
 
 // External imports
@@ -33,8 +35,8 @@ function application() {
   let functionName = application.name;
   let argumentDriveInterface = false;
   let commandInput, commandResult;
-  let inputData1 = 0,
-    inputData2 = 0;
+  let inputDataValue1 = 0,
+    inputDataValue2 = 0;
   console.log(`BEGIN ${namespacePrefix}${functionName} function`);
   console.log("BEGIN main program loop");
   if (argumentDriveInterface === false) {
@@ -52,11 +54,41 @@ function application() {
           programRunning = false;
           console.log("END main program loop");
           console.log("Exiting, Good bye, Have a nice day!");
+        } else if (commandInput.toUpperCase().trim() === "ADD") {
+          inputDataValue1 = 0;
+          inputDataValue2 = 0;
+          inputDataValue1 = getUserInput("Enter first number to add: ");
+          inputDataValue2 = getUserInput("Enter second number to add: ");
+          let addResult = myMath.add(inputDataValue1, inputDataValue2);
+          console.log(`Addition is ${addResult}`);
         }
       }
     }
   }
   console.log(`END ${namespacePrefix}${functionName} function`);
+}
+
+/**
+ * @function getUserInput
+ * @param {String} message
+ */
+function getUserInput(message) {
+  let functionName = getUserInput.name;
+  console.log(`BEGIN ${namespacePrefix} function`);
+  console.log(`message is ${message}`);
+  let returnData = 0;
+  let inputData;
+  let validInputString = false;
+  while (!validInputString) {
+    inputData = prompt.prompt(message);
+    if (!isNaN(parseInt(inputData))) {
+      validInputString = true;
+      returnData = parseInt(inputData);
+    }
+  }
+  console.log(`returnData is ${returnData}`);
+  console.log(`END ${namespacePrefix}${functionName} function`);
+  return returnData;
 }
 
 let programRunning = false;
